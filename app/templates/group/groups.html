@@ -1,0 +1,30 @@
+{% extends base.html %}
+
+
+{% block content %}
+  {% if iterable %}
+    <table>
+      {% for item in iterable %}
+      <tr>
+        <td>
+          <a href="{{ url_for('group_get', id=item.id)}}">{{item}}</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <h1>Відсутні будь-які елементи</h1>
+  {% endif %}
+
+  <form action="{{ url_for('group_management') }}" method="post" >
+    <p>
+        <label for="name">Name</label>
+        <input name="name" id=name type="text" required>
+
+        <label for="schedule">Schedule</label>
+        <input name="name" id="schedule" type="text" required>
+    </p>
+    <p><button type="submit">ADD group</button></p>
+  </form>
+
+{% endblock content %}
